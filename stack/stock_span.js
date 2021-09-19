@@ -8,15 +8,15 @@ function runProgram(input) {
     for (let i = 0; i < arr.length; i++) {
         if (stack.length === 0) {
             output.push(1);
-        } else if (stack.length > 0 && stack[stack.length-1][0] > arr[i]) {
+        } else if (stack.length > 0 && stack[stack.length-1][0] >= arr[i]) {
             output.push(i - stack[stack.length-1][1]);
-        } else if (stack.length > 0 && stack[stack.length-1][0] <= arr[i]) {
-            while (stack[stack.length-1][0] <= arr[i] && stack.length > 0) {
+        } else if (stack.length > 0 && stack[stack.length-1][0] < arr[i]) {
+            while (stack[stack.length-1][0] < arr[i] && stack.length > 0) {
                 stack.pop()
             }
             if (stack.length === 0) {
                 output.push(1);
-            } else if (stack.length > 0 && arr[i] < stack[stack.length-1][0]) {
+            } else {
                 output.push(i - stack[stack.length-1][1]);
             }
         }
@@ -27,7 +27,7 @@ function runProgram(input) {
 }
 
 if (process.env.USERNAME === 'panka') {
-  runProgram("100 80 60 70 60 75 85");
+  runProgram("100 80 60 80 70 10 100");
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");

@@ -6,23 +6,23 @@ function runProgram(input) {
 
     for (let i = input.length-1; i >= 0; i--) {
         if (stack.length === 0) {
-            output.unshift(-1);
+            output.push(-1);
         } else if (stack.length > 0 && stack[stack.length-1] > input[i]) {
-            output.unshift(stack[stack.length-1]);
+            output.push(stack[stack.length-1]);
         } else if (stack.length > 0 && stack[stack.length-1] <= input[i]) {
             while (stack[stack.length-1] <= input[i] && stack.length > 0) {
                 stack.pop();
             }
             if (stack.length === 0) {
-                output.unshift(-1);
+                output.push(-1);
             } else {
-                output.unshift(stack[stack.length-1]);
+                output.push(stack[stack.length-1]);
             }
         }
         stack.push(input[i]);
     }
 
-    console.log(output.join(" "));
+    console.log(output.reverse().join(" "));
 }
 
 if (process.env.USERNAME === 'panka') {
