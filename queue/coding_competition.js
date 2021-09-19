@@ -6,6 +6,16 @@
 
 // D: Harshit will ask the student, who is standing in front of the queue, to come and put his name and Harshit will remove him from the queue
 
+// Constraints :
+
+// Number of dequeue operations will never be greater than enqueue operations at any point of time.
+
+// 1<=Q<=100000
+
+// 1<=a<=4
+
+// 1<=b<=50000
+
 // Sample Input
 // 5
 // E 1 1
