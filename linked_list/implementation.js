@@ -10,6 +10,22 @@ class LinkedList {
         this.length++;
     }
 
+    insertAtTail(data) {
+        const newNode = new Node(data);
+
+        if (!this.head) {
+            this.head = newNode;
+        } else {
+            let current = this.head;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+        newNode.next = null;
+        this.length++;
+    }
+
     getByIndex(index) {
         if (index < 0 || index >= this.length) return null;
         let current = this.head;
@@ -36,12 +52,35 @@ class LinkedList {
         this.length--;
     }
 
+    removeTail() {
+        if (this.length === 0) return null;
+        let current = this.head;
+        while(current.next.next != null) {
+            current = current.next;
+        }
+        current.next = null;
+        this.length--;
+    }
+
     removeAtIndex(index) {
         if (index === 0) return this.removeHead();
         let prev = this.getByIndex(index - 1);
         if (prev === null) return null;
         prev.next = prev.next.next;
         this.length--;
+    }
+
+    printList() {
+        let current = this.head;
+        let index = 0;
+        while (current) {
+            console.log(current.value, index++);
+            current = current.next;
+        }
+    }
+
+    isEmpty() {
+        return this.length === 0 ? true : false;
     }
 }
 
@@ -53,12 +92,3 @@ class Node {
 }
 
 const d = new LinkedList();
-d.insertAtHead(10);
-d.insertAtHead(20);
-d.insertAtHead(30);
-d.insertAtHead(40);
-// console.log(d.getByIndex(2))
-// d.insertAtIndex(100, 50)
-console.log(d);
-d.removeAtIndex(1)
-console.log(d)
