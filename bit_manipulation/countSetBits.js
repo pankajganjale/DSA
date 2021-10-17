@@ -4,7 +4,7 @@ let find = (n) => {
         if (n & 1 !== 0) {
             count++;
         }
-        n /= 2;
+        n = n >> 1;
     }
     return count;
 }
