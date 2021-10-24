@@ -38,7 +38,6 @@ function runProgram(input) {
     let newArr = [];
     let output = [];
     find(arr, n, j, newArr, output);
-    console.log(output)
     let sum = 0;
     for (let i = 0; i < output.length; i++) {
         sum += output[i];
