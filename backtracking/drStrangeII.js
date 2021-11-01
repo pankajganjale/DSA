@@ -1,8 +1,6 @@
 // Dr. Strange is back again and this time he has an array A with n integers which may have duplicates. So he again uses his mind power and time stone to calculate all the possible subsets of the input array A. Generate all the possible subsets.
-// let op = (arr, output) => {
-//     output.push([...arr]);
-//     return output;
-// }
+// Elements within the subset must be in non-decreasing order. All the subsets must be distinct and sorted lexicographically. For an empty subset just print a blank line.
+
 let func = (newArr) => {
     let sum = 0;
     for (let i = 0; i < newArr.length; i++) {
@@ -13,7 +11,7 @@ let func = (newArr) => {
 
 let search = (findSum, output, ls, newArr) => {
     let count = 0
-    for (let i = 0; i < output.length; i++) {
+    for (let i = 0; i < ls.length; i++) {
         if (findSum === ls[i][0] && newArr.length === ls[i][1]) count++;
     }
     if (count === 0) return true;
@@ -24,7 +22,7 @@ let find = (n, arr, j, output, newArr, ls) => {
     let findSum = func(newArr);
     if (search(findSum, output, ls, newArr)) {
         output.push([...newArr]);
-        ls.push(...[findSum, newArr.length]);
+        ls.push([findSum, newArr.length]);
     }
     
     if (n === j) return;
@@ -44,12 +42,18 @@ function runProgram(input) {
     let j = 0;
     let newArr = [];
     find(n, arr, j, output, newArr, ls);
-    console.log(output);
+    // output.sort()
+    output.unshift([])
+    for (let i = 0; i < output.length; i++) {
+      console.log(output[i].sort(function(a, b) {
+        return a - b;
+      }).join(" "))
+    }
 }
 
 if (process.env.USERNAME === 'panka') {
-runProgram(`3
-1 2 2`);
+runProgram(`2
+10 3`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
