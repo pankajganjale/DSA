@@ -19,6 +19,7 @@ let sortArr = (arr, n) => {
 let find = (n, k, arr) => {
     let l = 0;
     let h = n-1;
+    let res = -1;
     while (l <= h) {
         let mid = Math.floor(l + ((h-l)/2));
         if (arr[mid] === k) {
@@ -45,7 +46,8 @@ function runProgram(input) {
 }
 
 if (process.env.USERNAME === 'panka') {
-  runProgram();
+runProgram(`7 10
+1 2 10 10 10 11 12`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
