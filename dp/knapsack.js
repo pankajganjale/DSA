@@ -1,41 +1,43 @@
-var item = [10, 20, 30]
-var value = [60, 100, 120]
-var w = 50;
-var n = item.length
+let find = (values, items, w, n) => {
+    if (w === 0 || n === 0) return 0;
+    if (items[n-1] <= w) {
+        return Math.max(values[n-1] + find(values, items, w-items[n-1], n-1), find(values, items, w, n-1));
+    } else {
+        return find(values, items, w, n-1);
+    }
+};
 
-function knapsack(item, value, w, n) {
-    if (n == 0 || w == 0) {
-        return 0
-    }
-    if (item[n - 1] <= w) {
-        return Math.max(value[n - 1] + knapsack(item, value, w - item[n - 1], n - 1), knapsack(item, value, w, n - 1))
-    }
-    else {
-        return knapsack(item, value, w, n - 1)
-    }
+function runProgram(input) {
+    input = input.trim().split("\n");
+    let w = +input[0];
+    let n = +input[1];
+    let values = input[2].trim().split(" ").map(Number);
+    let items = input[3].trim().split(" ").map(Number);
+    console.log(find(values, items, w, n));
 }
-console.log(knapsack(item, value, w, n));
+
+if (process.env.USERNAME === 'panka') {
+runProgram(`50 
+3
+60 100 120 
+10 20 30`);
+} else {
+  process.stdin.resume();
+  process.stdin.setEncoding("ascii");
+  let read = "";
+  process.stdin.on("data", function (input) {
+    read += input;
+  });
+  process.stdin.on("end", function () {
+    read = read.replace(/\n$/, "");
+    read = read.replace(/\n$/, "");
+    runProgram(read);
+  });
+  process.on("SIGINT", function () {
+    read = read.replace(/\n$/, "");
+    runProgram(read);
+    process.exit(0);
+  });
+}
 
 
-
-//for iterative mode top to down method
-// var dp = []
-// for (var i = 0; i <= n; i++) {
-//     dp[i] = []
-//     for (var j = 0; j <= w; j++) {
-//         if (i == 0 || j == 0) {
-//             dp[i][j] = 0
-//         }
-//     }
-// }
-// for (var i = 1; i <= n; i++) {
-//     for (var j = 1; j <= w; j++) {
-//         if (item[i - 1] <= w) {
-//             dp[i][j] = Math.max(value[i - 1] + dp[i - 1][j - item[i - 1]], dp[i - 1][j])
-//         } else {
-//             dp[i][j] = dp[i - 1][j]
-//         }
-//     }
-// }
-
-// console.log(dp[n][w]);
