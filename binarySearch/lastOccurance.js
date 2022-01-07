@@ -1,4 +1,4 @@
-const arr = [1, 3, 5, 10, 10, 10, 15];
+const arr = [1, 3, 5, 10, 10, 10, 10];
 const n = arr.length;
 const k = 10;
 
@@ -6,7 +6,7 @@ const lastOccurance = (arr, n, k) => {
     let lo = 0;
     let hi = n-1;
     let index = -1;
-    while (lo < hi) {
+    while (lo <=hi) {
         const mid = Math.floor(lo + ((hi - lo)/2));
         if (arr[mid] === k) {
             index = mid;
