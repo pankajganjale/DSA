@@ -2,7 +2,7 @@ const arr = [1, 3, 5, 10, 10, 10, 15];
 const n = arr.length;
 const k = 10;
 
-const firstOccurance = (arr, n, k) => {
+const lastOccurance = (arr, n, k) => {
     let lo = 0;
     let hi = n-1;
     let index = -1;
@@ -20,4 +20,4 @@ const firstOccurance = (arr, n, k) => {
     return index;
 };
 
-console.log(firstOccurance(arr, n, k));
+console.log(lastOccurance(arr, n, k));
