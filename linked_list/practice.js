@@ -23,7 +23,4 @@ class LinkedList {
     }
 }
 
-let one = new LinkedList()
-one.insertAtTail(5)
-one.insertAtTail(6)
-console.log(one)
+
